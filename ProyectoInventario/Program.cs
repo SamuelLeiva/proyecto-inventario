@@ -109,7 +109,7 @@ class Program
 
         Console.WriteLine("ID\tNombres\tTipo");
         Console.WriteLine("-------------------------------------");
-        Console.WriteLine($"{empleado.Id}\t{empleado.Nombres}\t{empleado.TipoEmpleado.Nombre}\t{empleado.FechaIngreso}\t{empleado.Edad}\t{empleado.Genero}");
+        Console.WriteLine($"{empleado.Id}\t{empleado.Nombres}\t{empleado.TipoEmpleado.Nombre}\t{empleado.FechaIngreso.ToString("dd-MM-yyyy")}\t{empleado.Edad}\t{empleado.Genero}");
     }
 
     static void AgregarEmpleado(SistemaInventario sistema)
@@ -144,24 +144,34 @@ class Program
 
         var tipoSeleccionado = tiposEmpleados[tipoIndice]; // Estoy agarrando una instancia de TipoEmpleado
 
+        Console.WriteLine("Agregue la edad del empleado:");
         int edad = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Ingrese su genero con la palabra MASCULINO o FEMENINO");
-        Genero genero = (Genero)Convert.ToInt32(Console.ReadLine()); // 1 = Masculino
+        Console.WriteLine("Ingrese su genero MASCULINO(0) o FEMENINO(1)");
+        Genero genero = (Genero)Convert.ToInt32(Console.ReadLine()); // 0 = Masculino
 
-        // Leeerlo con el tryParse
+        // Leerlo con el tryParse
+        Console.WriteLine("Agregue la fecha de ingreso");
+        Console.WriteLine("Agregue el día");
+        int dia = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Agregue el mes (número entre 1 y 12)");
+        int mes = Convert.ToInt32(Console.ReadLine());
+        Console.WriteLine("Agregue el año");
+        int anno = Convert.ToInt32(Console.ReadLine());
 
         // Agregar año, mes y fecha
-        // Agregar usando el formato DD/MM/AAAA
+        DateTime fechaIngreso = new DateTime(anno, mes, dia);
 
         var empleado = new Empleado
         {
-            Nombres = nombres,
+            Nombres = nombres!,
             TipoEmpleado = tipoSeleccionado,
             Estado = EstadoEmpleado.ACTIVO,
-            FechaIngreso = new DateTime(1900, 1, 1),
+            FechaIngreso = fechaIngreso,
             Edad = edad,
             Genero = genero,
+            FechaCreacion = DateTime.Now,
+            FechaModificacion = DateTime.Now
         };
 
         sistema.AgregarEmpleado(empleado);
@@ -184,7 +194,7 @@ class Program
         Console.WriteLine("-------------------------------------");
         foreach (var empleado in empleados)
         {
-            Console.WriteLine($"{empleado.Id}\t{empleado.Nombres}\t{empleado.TipoEmpleado.Nombre}\t{empleado.FechaIngreso}\t{empleado.Edad}\t{empleado.Genero}");
+            Console.WriteLine($"{empleado.Id}\t{empleado.Nombres}\t{empleado.TipoEmpleado.Nombre}\t{empleado.FechaIngreso.ToString("dd-MM-yyyy")}\t{empleado.Edad}\t{empleado.Genero}");
         }
     }
 

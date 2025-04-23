@@ -49,4 +49,5 @@ public class SistemaInventario // Heredar esa interfaz para sobrescribir esos me
 
     // Agregar el resto de metodos
 
+
 }
