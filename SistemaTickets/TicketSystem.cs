@@ -27,6 +27,12 @@ public class TicketSystem
         _developerList.Add(developer);
     }
 
+    public List<Developer> GetDevelopers()
+    {
+        return _developerList;
+    }
+
+
     //asignar tickets
     public void LinkTicket(int idTicket, Developer developer)
     {
