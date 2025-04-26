@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SistemaTickets.Modelos.Enums;
 
 namespace SistemaTickets.Modelos;
 
@@ -19,7 +20,7 @@ public class Ticket
     public string ReportedBy { get; set; }
     public DateTime CreatedDate { get; private set; } = DateTime.Now;
     public DateTime? LastUpdated { get; set; }
-    public TeamMember? AssignedTo { get; set; }
+    public Developer? AssignedTo { get; set; }
     public List<Comment> Comments { get; private set; } = new List<Comment>();
 
     public Ticket()
