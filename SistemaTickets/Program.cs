@@ -35,7 +35,7 @@ internal class Program
                         ShowTickets(ticketSystem);
                         break;
                     case "2":
-                        //AddTicket(ticketSystem);
+                        AddTicket(ticketSystem);
                         break;
                     case "0":
                         exit = true;
@@ -61,11 +61,58 @@ internal class Program
 
         foreach (var ticket in tickets)
         {
-            Console.WriteLine($"{ticket.Id}\t\t{ticket.Title}\t\t{ticket.Priority}\t\t{ticket.Status}\t\t{ticket.AssignedTo.Name}");
+            if (ticket.AssignedTo != null)
+            {
+                Console.WriteLine($"{ticket.Id}\t\t{ticket.Title}\t\t{ticket.Priority}\t\t{ticket.Status}\t\t{ticket.AssignedTo.Name}");
+            } else
+            {
+                Console.WriteLine($"{ticket.Id}\t\t{ticket.Title}\t\t{ticket.Priority}\t\t{ticket.Status}\t\t");
+            }
+            
         }
     }
 
-    
+    static void AddTicket(TicketSystem ticketSystem)
+    {
+        Console.WriteLine("Creacion de nuevo ticket");
+
+        Console.WriteLine("Titulo");
+        string title = Console.ReadLine();
+
+        Console.Write("Descripción: ");
+        string description = Console.ReadLine();
+
+        Console.WriteLine("Seleccione la prioridad:");
+        Console.WriteLine("1. Low\n2. High\n3. Critical");
+
+        if(!Enum.TryParse(Console.ReadLine(), out Priority priority))
+        {
+            priority = Priority.Low;
+        }
+
+        Console.WriteLine("Seleccione la categoría:");
+        Console.WriteLine("1. Feature\n2. Bug\n3. Other");
+
+        if (!Enum.TryParse(Console.ReadLine(), out TicketCategory category))
+        {
+            category = TicketCategory.Other;
+        }
+
+        Console.WriteLine("Nombre del generador del ticket: ");
+        string generator = Console.ReadLine();
+
+        Ticket ticket = new Ticket
+        {
+            Title = title,
+            Description = description,
+            Priority = priority,
+            Category = category,
+            ReportedBy = generator
+        };
+
+        ticketSystem.AddTicket(ticket);
+        Console.WriteLine($"Ticket creado con id {ticket.Id}");
+    }
 
     
 }
