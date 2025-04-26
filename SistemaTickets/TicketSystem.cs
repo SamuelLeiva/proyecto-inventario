@@ -32,6 +32,10 @@ public class TicketSystem
         return _developerList;
     }
 
+    public Developer? GetDeveloper(int id)
+    {
+        return _developerList.FirstOrDefault(d => d.Id == id);
+    }
 
     //asignar tickets
     public void LinkTicket(int idTicket, Developer developer)
