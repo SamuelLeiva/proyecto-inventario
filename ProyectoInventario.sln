@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoInventario", "Proye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestionAlmacen", "GestionAlmacen\GestionAlmacen.csproj", "{F6E35CB1-2EDB-4EDA-BA9D-D8519A27C319}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaTickets", "SistemaTickets\SistemaTickets.csproj", "{F52012AE-14A3-4F4C-A008-48A11BA19516}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F6E35CB1-2EDB-4EDA-BA9D-D8519A27C319}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6E35CB1-2EDB-4EDA-BA9D-D8519A27C319}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6E35CB1-2EDB-4EDA-BA9D-D8519A27C319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52012AE-14A3-4F4C-A008-48A11BA19516}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52012AE-14A3-4F4C-A008-48A11BA19516}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52012AE-14A3-4F4C-A008-48A11BA19516}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52012AE-14A3-4F4C-A008-48A11BA19516}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

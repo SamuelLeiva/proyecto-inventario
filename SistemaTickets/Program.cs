@@ -29,13 +29,13 @@ internal class Program
 
             try
             {
-                switch (opcion)
+                switch (option)
                 {
                     case "1":
-                        ticketService.GetAllTickets(ticketSystem);
+                        ShowTickets(ticketSystem);
                         break;
                     case "2":
-                        ticketService.AddTicket(ticketSystem);
+                        //AddTicket(ticketSystem);
                         break;
                     case "0":
                         exit = true;
@@ -52,6 +52,20 @@ internal class Program
 
         Console.WriteLine("Saliendo del sistema......");
     }
+
+    static void ShowTickets(TicketSystem ticketSystem)
+    {
+        Console.WriteLine("============= Tickets ===============");
+
+        var tickets = ticketSystem.GetAllTickets();
+
+        foreach (var ticket in tickets)
+        {
+            Console.WriteLine($"{ticket.Id}\t\t{ticket.Title}\t\t{ticket.Priority}\t\t{ticket.Status}\t\t{ticket.AssignedTo.Name}");
+        }
+    }
+
+    
 
     
 }

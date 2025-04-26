@@ -17,6 +17,11 @@ public class TicketSystem
         _ticketList.Add(ticket);
     }
 
+    public List<Ticket> GetAllTickets()
+    {
+        return _ticketList;
+    }
+
     public Ticket? GetTicket (int id)
     {
         return _ticketList.FirstOrDefault(t => t.Id == id);
