@@ -1,5 +1,6 @@
 ﻿using SistemaTickets.Modelos;
 using SistemaTickets.Modelos.Enums;
+using SistemaTickets.Servicios;
 
 namespace SistemaTickets;
 
@@ -10,37 +11,47 @@ internal class Program
         Console.WriteLine("========= SISTEMA DE TICKETS ==========\n");
 
         //iniciar el sistema
+        TicketSystem ticketSystem = new TicketSystem();
+        TicketService ticketService = new TicketService();
+
         //rellenar datos
+        ticketService.FillData(ticketSystem);
+
+        bool exit = false;
+        while (!exit)
+        {
+            Console.WriteLine("\nTicket Management System Menu:");
+            Console.WriteLine("1. Ver tickets");
+            Console.WriteLine("2. Añadir ticket");
+            Console.WriteLine("0. Salir");
+
+            string option = Console.ReadLine();
+
+            try
+            {
+                switch (opcion)
+                {
+                    case "1":
+                        ticketService.GetAllTickets(ticketSystem);
+                        break;
+                    case "2":
+                        ticketService.AddTicket(ticketSystem);
+                        break;
+                    case "0":
+                        exit = true;
+                        break;
+                    default:
+                        Console.WriteLine("Opción inválida. Pruebe otra vez.");
+                        break;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine($"Ha ocurrido un error: {ex.Message}");
+            }
+        }
+
+        Console.WriteLine("Saliendo del sistema......");
     }
 
-    static void FillData(TicketSystem ticketSystem)
-    {
-        ticketSystem.AddDeveloper(new Developer { Name = "Samuel", Adress = "Pueblo Libre", Age = 27, Dni = "78945625", Genre = "Masculino", Role = "Desarrollador" });
-        ticketSystem.AddDeveloper(new Developer { Name = "Jorge", Adress = "Pueblo Libre", Age = 27, Dni = "451658115", Genre = "Masculino", Role = "Desarrollador" });
-        ticketSystem.AddDeveloper(new Developer { Name = "Juan", Adress = "Pueblo Libre", Age = 27, Dni = "54561655615", Genre = "Masculino", Role = "Desarrollador" });
-
-        var ticket1 = new Ticket
-        {
-            Title = "Error en el inventario",
-            Description = "Los elementos del inventario no cargan ni se visualizan en la página.",
-            Priority = Priority.High,
-            Category = TicketCategory.Bug,
-            ReportedBy = "Cliente 1"
-        };
-
-        var ticket2 = new Ticket
-        {
-            Title = "Añadir pasarela de pago",
-            Description = "Se necesita añadir una pasarela de pago que acepte tarjeta y depósito.",
-            Priority = Priority.Low,
-            Category = TicketCategory.Feature,
-            ReportedBy = "Equipo de desarrollo"
-        };
-
-        ticketSystem.AddTicket(ticket1);
-        ticketSystem.AddTicket(ticket2);
-
-        //vincular tickets a los developers
-
-    }
+    
 }
