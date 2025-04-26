@@ -8,6 +8,7 @@ namespace SistemaTickets.Modelos;
 
 public class Comment
 {
+    private static int _nextId = 1;
     public int Id { get; private set; }
     public string Author { get; private set; }
     public string Text { get; private set; }
@@ -15,6 +16,7 @@ public class Comment
 
     public Comment(string author, string text)
     {
+        Id = _nextId++;
         Author = author;
         Text = text;
     }
