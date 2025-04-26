@@ -27,4 +27,9 @@ public class Ticket
     {
         Id = _nextId++;
     }
+
+    public void LinkDeveloper(Developer developer) //función para vincular el developer al ticket
+    {
+        AssignedTo = developer;
+    }
 }

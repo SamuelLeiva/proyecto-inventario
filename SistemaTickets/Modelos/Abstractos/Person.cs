@@ -8,9 +8,9 @@ namespace SistemaTickets.Modelos.Abstractos;
 
 public abstract class Person
 {
-    public string Name { get; protected set; }
-    public string Genre { get; protected set; }
-    public string Dni { get; protected set; }
-    public string Adress { get; protected set; }
-    public string Age { get; protected set; }
+    public string Name { get; set; }
+    public string Genre { get; set; }
+    public string Dni { get; set; }
+    public string Adress { get; set; }
+    public int Age { get; set; }
 }
